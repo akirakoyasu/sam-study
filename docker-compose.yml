@@ -2,7 +2,6 @@ version: "3.4"
 services:
   sam-local:
     image: akirakoyasu/aws-sam-local
-    build: .
     environment:
       # mount host dir
       SAM_DOCKER_VOLUME_BASEDIR: ${PWD}/src/app

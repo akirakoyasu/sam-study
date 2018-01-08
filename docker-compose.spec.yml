@@ -1,0 +1,12 @@
+version: "3.4"
+services:
+  lambda-python:
+    image: lambci/lambda:python3.6
+    build: .
+    environment:
+      PYTHONPATH: /var/task/spec:/var/task/app
+    volumes:
+      - ./src:/var/task
+    working_dir: /var/task/spec
+    entrypoint:
+      - /var/lang/bin/python3.6

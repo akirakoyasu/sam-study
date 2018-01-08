@@ -1,0 +1,11 @@
+sudo: enabled
+
+script:
+  - ./scripts/spec.sh
+
+#deploy:
+#  provider: script
+#  script: scripts/deploy.sh
+#  on:
+#    branch: master
+#

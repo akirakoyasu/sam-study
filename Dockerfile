@@ -10,6 +10,7 @@
 #
 
 FROM node:8.9
+LABEL maintainer="Akira Koyasu <mail@akirakoyasu.net>"
 
 RUN chown -R node:node /usr/local/lib/node_modules \
   && chown -R node:node /usr/local/bin

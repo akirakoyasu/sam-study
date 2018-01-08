@@ -2,10 +2,12 @@
 set -exu
 
 cwd=$(cd $(dirname "$0"); pwd)
+cd "${cwd}/.."
 
-echo "{}" \
-| exec docker-compose run \
+exec docker-compose \
+  --file docker-compose.spec.yml \
+  run \
   --rm \
-  -e SAM_DOCKER_VOLUME_BASEDIR="${cwd}/../src" \
-  sam-local \
-  sam local invoke "SpecBootstrap" --template=template-spec.yml
+  lambda-python -m unittest discover
+
+cd -

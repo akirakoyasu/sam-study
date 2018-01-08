@@ -1,9 +1,10 @@
 import unittest
 
 import index
-from .bootstrap import Bootstrap
-
+from lambda_context_mock import LambdaContext
 
 class TestIndex(unittest.TestCase):
     def test_handler(self):
-        index.handler(Bootstrap.event, Bootstrap.context)
+        event = {}
+        context = LambdaContext()
+        index.handler(event, context)

@@ -1,0 +1,23 @@
+#!/bin/bash
+set -eu
+
+cwd=$(cd $(dirname "$0"); pwd)
+cd "${cwd}/.."
+
+if [ $# -ge 1 -a "${1:-}" == "--" ]; then
+  shift
+  set -x
+  exec docker-compose \
+    --file docker-compose.spec.yml \
+    run \
+    --rm \
+    lambda-python "$@"
+else
+  set -x
+  exec docker-compose \
+    --file docker-compose.spec.yml \
+    run \
+    --rm \
+    --entrypoint /var/lang/bin/python3.6 \
+    lambda-python "$@"
+fi

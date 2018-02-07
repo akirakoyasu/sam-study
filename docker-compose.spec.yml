@@ -7,5 +7,4 @@ services:
     volumes:
       - ./src:/var/task
     working_dir: /var/task/spec
-    entrypoint:
-      - /var/lang/bin/python3.6
+    entrypoint: []

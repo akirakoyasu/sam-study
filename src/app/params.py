@@ -1,3 +1,6 @@
+import aws_paramstore_py as paramstore
+
+
 def handler(event, context):
     """
     https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/python-programming-model-handler-types.html
@@ -14,14 +17,5 @@ def handler(event, context):
     Event 呼び出しタイプ (非同期実行) を使用すると、値は破棄されます。
     """
     return {
-        'event': event,
-        'context': {
-            'function_name': context.function_name,
-            'function_version': context.function_version,
-            'invoked_function_arn': context.invoked_function_arn,
-            'memory_limit_in_mb': context.memory_limit_in_mb,
-            'aws_request_id': context.aws_request_id,
-            'log_group_name': context.log_group_name,
-            'log_stream_name': context.log_stream_name
-        }
+        'parameters': paramstore.get()
     }

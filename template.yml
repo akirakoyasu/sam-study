@@ -14,3 +14,13 @@ Resources:
       Runtime: python3.6
       CodeUri: ./src/app
       Handler: index.handler
+      Role: arn:aws:iam::638218825207:role/LambdaInvoke
+
+  ParamsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      AutoPublishAlias: params
+      Runtime: python3.6
+      CodeUri: ./src/app
+      Handler: params.handler
+      Role: arn:aws:iam::638218825207:role/LambdaInvoke

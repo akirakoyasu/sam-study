@@ -2,6 +2,7 @@ AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: A hello world application.
 
+# SAM-localが読んでくれないのでGlobalsの利用は限定的
 Globals:
   Function:
     Timeout: 60
@@ -15,6 +16,9 @@ Resources:
       CodeUri: ./src/app
       Handler: index.handler
       Role: arn:aws:iam::638218825207:role/LambdaInvoke
+      Environment:
+        Variables:
+          PYTHONPATH: /var/task/site-packages:/var/runtime
 
   ParamsFunction:
     Type: AWS::Serverless::Function
@@ -24,3 +28,6 @@ Resources:
       CodeUri: ./src/app
       Handler: params.handler
       Role: arn:aws:iam::638218825207:role/LambdaInvoke
+      Environment:
+        Variables:
+          PYTHONPATH: /var/task/site-packages:/var/runtime

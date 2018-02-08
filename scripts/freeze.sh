@@ -5,7 +5,7 @@ cwd=$(cd $(dirname "$0"); pwd)
 cd "${cwd}/.."
 
 set -x
-pip3 freeze -r requirements-default.txt \
+./venv/bin/pip3 freeze -r requirements-default.txt \
  | sed -ne '/^## The following requirements were added by pip freeze/,$p' \
  >requirements.txt
 

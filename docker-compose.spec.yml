@@ -3,8 +3,13 @@ services:
   lambda-python:
     image: lambci/lambda:python3.6
     environment:
-      PYTHONPATH: /var/task/spec:/var/task/app
+      PYTHONPATH: /var/task/src/spec:/var/task/src/app:/var/task/src/app/site-packages
     volumes:
-      - ./src:/var/task
-    working_dir: /var/task/spec
+      - .:/var/task
+      - venv:/var/venv
+    working_dir: /var/task/src/spec
+    user: root
     entrypoint: []
+
+volumes:
+  venv: {}

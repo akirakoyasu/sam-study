@@ -105,3 +105,5 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+src/app/site-packages/*
+!src/app/site-packages/.keep

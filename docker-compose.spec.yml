@@ -3,7 +3,7 @@ services:
   lambda-python:
     image: lambci/lambda:python3.6
     environment:
-      PYTHONPATH: /var/task/src/spec:/var/task/src/app:/var/task/src/app/site-packages
+      PYTHONPATH: /var/task/src/spec:/var/task/src/app:/var/task/src/app/site-packages:/var/runtime
     volumes:
       - .:/var/task
       - venv:/var/venv
